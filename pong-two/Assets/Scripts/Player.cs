@@ -2,32 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Paddle
 {
-    public KeyCode upKey;
-    public KeyCode downKey;
-    public float paddleSpeed = 6f;
-    public float verticalInput;
+    private Vector2 direction;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Start()
     {
-        MovePaddle();
+        
     }
 
-    void MovePaddle()
+    void Update()
     {
-        verticalInput = 0;
+        PaddleDirection();
+    }
 
-        if (Input.GetKey(upKey))
-        {
-            verticalInput = 1;
-        }
-        else if (Input.GetKey(downKey))
-        {
-            verticalInput = -1;
-        }
+    void FixedUpdate()
+    {
+        PaddleMovement();
+    }
 
-        transform.Translate(new Vector2(0, verticalInput * paddleSpeed * Time.deltaTime));
+    void PaddleDirection()
+    {
+        if (Input.GetKey(KeyCode.W)) { direction = Vector2.up; }
+        else if (Input.GetKey(KeyCode.S)) { direction = Vector2.down; }
+        else { direction = Vector2.zero; }
+    }
+
+    void PaddleMovement()
+    {
+        if (direction.sqrMagnitude != 0)
+        {
+            rb.AddForce(direction * this.paddleSpeed);
+        }
     }
 }
