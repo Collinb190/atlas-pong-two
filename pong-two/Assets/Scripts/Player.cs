@@ -6,11 +6,6 @@ public class Player : Paddle
 {
     private Vector2 direction;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         PaddleDirection();

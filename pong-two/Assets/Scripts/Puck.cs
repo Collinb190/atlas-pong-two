@@ -10,18 +10,16 @@ public class Puck : MonoBehaviour
     private Vector2 startingPoint;
     private Vector2 startingLaunch;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         startingPoint = rb.position;
         Launch();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void Launch()
@@ -29,6 +27,11 @@ public class Puck : MonoBehaviour
         float randomDirectionY = Random.Range(-1, 2);
         float randomDirectionX = Random.Range(0, 2) * 2 - 1;
         startingLaunch = new Vector2(randomDirectionX, randomDirectionY).normalized;
-        rb.velocity = startingLaunch * startSpeed;
+        rb.AddForce(startingLaunch * this.startSpeed);
+    }
+
+    public void AddForce(Vector2 force)
+    {
+        rb.AddForce(force);
     }
 }

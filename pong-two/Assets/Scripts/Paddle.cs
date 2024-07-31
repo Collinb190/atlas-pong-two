@@ -6,7 +6,7 @@ public class Paddle : MonoBehaviour
 {
     protected Rigidbody2D rb;
 
-    public float paddleSpeed = 6f;
+    public float paddleSpeed = 9f;
 
     private void Awake()
     {
