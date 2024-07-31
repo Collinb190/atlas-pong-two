@@ -19,7 +19,7 @@ public class Puck : MonoBehaviour
     void Start()
     {
         startingPoint = rb.position;
-        Launch();
+        StartCoroutine(LaunchDelay());
     }
 
     private void Update()
@@ -53,6 +53,12 @@ public class Puck : MonoBehaviour
     {
         rb.position = startingPoint;
         rb.velocity = Vector3.zero;
+        StartCoroutine(LaunchDelay());
+    }
+
+    IEnumerator LaunchDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
         Launch();
     }
 }
