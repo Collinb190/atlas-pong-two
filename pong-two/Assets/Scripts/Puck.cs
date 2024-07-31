@@ -34,4 +34,11 @@ public class Puck : MonoBehaviour
     {
         rb.AddForce(force);
     }
+
+    public void ResetPuck()
+    {
+        rb.position = startingPoint;
+        rb.velocity = Vector3.zero;
+        Launch();
+    }
 }

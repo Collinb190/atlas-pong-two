@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Puck puck;
+
+    private int playerScore;
+    private int computerScore;
+
+    public void PlayerScores()
     {
-        
+        playerScore++;
+        this.puck.ResetPuck();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ComputerScore()
     {
-        
+        computerScore++;
+        this.puck.ResetPuck();
     }
 }
