@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public Puck puck;
-    public TextMesh playerScoreUI;
-    public TextMesh computerScoreUI;
+    public TextMeshProUGUI playerScoreUI;
+    public TextMeshProUGUI computerScoreUI;
 
     private int playerScore;
     private int computerScore;

@@ -22,10 +22,24 @@ public class Puck : MonoBehaviour
         Launch();
     }
 
+    private void Update()
+    {
+        if (rb.velocity.x > 0f && rb.velocity.x < 2.5f)
+        {
+            Vector2 minForcePos = new Vector2(2.5f, 0f);
+            rb.AddForce(minForcePos);
+        }
+        else if (rb.velocity.x < 0f && rb.velocity.x > -2.5f)
+        {
+            Vector2 minForceNeg = new Vector2(-2.5f, 0f);
+            rb.AddForce(minForceNeg);
+        }
+    }
+  
     void Launch()
     {
-        float randomDirectionY = Random.Range(-1, 2);
-        float randomDirectionX = Random.Range(0, 2) * 2 - 1;
+        float randomDirectionY = Random.Range(-1f, 1f) >= 0 ? 1 : -1;
+        float randomDirectionX = Random.Range(-1f, 1f) >= 0 ? 1 : -1;
         startingLaunch = new Vector2(randomDirectionX, randomDirectionY).normalized;
         rb.AddForce(startingLaunch * this.startSpeed);
     }
