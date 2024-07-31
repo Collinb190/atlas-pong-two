@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     private int playerScore;
     private int computerScore;
 
+    private void Update()
+    {
+        CheckForWinner();
+    }
+
     public void PlayerScores()
     {
         playerScore++;
@@ -25,5 +30,15 @@ public class GameManager : MonoBehaviour
         this.puck.ResetPuck();
     }
 
-
+    void CheckForWinner()
+    {
+        if (playerScore == 11)
+        {
+            Debug.Log("Player Wins");
+        }
+        else if (computerScore == 11)
+        {
+            Debug.Log("AI Wins");
+        }
+    }
 }
