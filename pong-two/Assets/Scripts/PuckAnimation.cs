@@ -12,7 +12,6 @@ public class PuckAnimation : MonoBehaviour
 
         if (puck != null)
         {
-            Debug.Log("collison detected");
             animator.SetBool("isIdle", false);
             animator.SetTrigger("Blink");
             StartCoroutine(ResetIdle());
